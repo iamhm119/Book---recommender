@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .navbar {
+            background-color: #6a0dad;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+            padding: 0.8rem 1rem;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        .search-box {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.1);
+        }
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            height: 300px;
+            object-fit: cover;
+        }
+        .card-title {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .author {
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">📚 My Book Recommender</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/recommend">Recommend</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Search Section -->
+<div class="container">
+    <div class="search-box">
+        <h1>Find Similar Books</h1>
+        <form action="/recommend_books" method="post" class="d-flex justify-content-center">
+            <input type="text" name="user_input" placeholder="Enter book name" class="form-control w-50 me-2">
+            <button class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    {% if data %}
+    <div class="row mt-5 g-4 justify-content-center">
+        {% for book in data %}
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100">
+                <img src="{{ book[2] }}" alt="{{ book[0] }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book[0] }}</h5>
+                    <p class="author">{{ book[1] }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
