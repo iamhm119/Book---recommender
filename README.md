@@ -1,4 +1,3 @@
-# Book---recommender
 "A machine learning based book recommender system using collaborative filtering / content-based filtering"
 
 # 📚 Book Recommender System
@@ -15,6 +14,22 @@ This app suggests books to users based on collaborative filtering techniques.
 - Simple and user-friendly UI
 
 ---
+
+## 📂 Project Structure
+
+book-recommender-system/
+│── app.py                 # Streamlit web app
+│── books.pkl              # Trained model (if small, else provide link)
+│── requirements.txt       # Dependencies
+│── README.md              # Documentation
+│── notebook.ipynb         # Model training notebook
+│── data/                  # Dataset (optional / if small)
+
+--- 
+
+## 📊 Demo
+
+<img width="1918" height="983" alt="image" src="https://github.com/user-attachments/assets/be4a3aa3-a31f-40e3-b8de-d96e1ebed825" />
 
 ## 🛠️ Installation
 Clone the repository and install dependencies:
